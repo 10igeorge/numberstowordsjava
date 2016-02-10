@@ -42,7 +42,7 @@ public class App {
     tensMap.put(70, "seventy");
     tensMap.put(80, "eighty");
     tensMap.put(90, "ninety");
-
+//Numbers under 10
     if (number < 10){
       for (Object key : under10Map.keySet()){
        if (key == number){
@@ -50,63 +50,67 @@ public class App {
         }
       }
     }
-
+//Teens (Numbers between 10 and 20)
     if (number > 10 && number < 20){
-      for (Object key : under20Map.keySet()){
+      for (Object key : under20Map.keySet()) {
        if (key == number){
          results = under20Map.get(key);
         }
       }
     }
-
+//Numbers ending in 0 (20, 30, 40)
     if (number % 10 == 0){
-      for (Object key : tensMap.keySet()){
+      for (Object key : tensMap.keySet()) {
         if (key == number){
           results = tensMap.get(key);
         }
       }
     }
+//Numbers 21-99
     if (number > 20){
-      for (Integer key : tensMap.keySet()){
+      for (Integer key : tensMap.keySet()) {
         if (key / 10 == number / 10){
           results = tensMap.get(key);
         }
       }
-      for (Integer key : under10Map.keySet()){
+      for (Integer key : under10Map.keySet()) {
         if (key % 10 == number % 10){
           results = results.concat(" " + under10Map.get(key));
         }
       }
     }
-    //
-    // if (number > 20 && number % 10 > 0){
-    //
-    // }
+//Hundreds
+  if (number > 99){
+    for (Integer key : under10Map.keySet()) {
+      if (number / 100 == key){
+        results = under10Map.get(key) + " hundred";
+      }
+    }
+    if (number < 110){
+      for (Integer prop : under10Map.keySet()) {
+        if (prop % 10 == number % 10){
+          results = results.concat(" " + under10Map.get(prop));
+        }
+      }
+    } else if (number < 120){
+      for (Integer key : under20Map.keySet()) {
+       if (number % 100 == key){
+         results = results.concat(" " + under20Map.get(key));
+        }
+      }
+    } else if (number < 1000){
+      for (Integer key : tensMap.keySet()) {
+        if ((key/10)%10 == (number/10)%10){
+          results = results.concat(" " + tensMap.get(key));
+        }
+      }
+      for (Integer key : under10Map.keySet()) {
+        if ((key%10)%10 == (number%10)%10){
+          results = results.concat(" " + under10Map.get(key));
+        }
+      }
+    }
+  }
     return results;
   }
 }
-
-
-
-// String results = "";
-// HashMap<Integer, String> lessThan20Map = new HashMap<Integer, String>();
-// HashMap<Integer, String> moreThan20Map = new HashMap<Integer, String>();
-// String[] lessThan20 = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-// String[] moreThan20 = {"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-//
-// for (Integer i= 0; i <= lessThan20.length; i++) {
-//   lessThan20Map.put(i, lessThan20[i]);
-// }
-//
-// for (Integer i=0; i <= moreThan20.length; i++) {
-//   moreThan20Map.put(i, moreThan20[i]);
-// }
-//
-// if (number < 20) {
-//   for (Object key : lessThan20Map.keySet() ) {
-//     if (number == key) {
-//       results = lessThan20Map.get(key);
-//     }
-//   }
-// }
-// return results;

@@ -27,7 +27,28 @@ public class AppTest {
    @Test
     public void numberWord_translateANumberBetweenTens_word() {
       App numbersToWords = new App();
-      String word = "twenty two";
-      assertEquals(word, numbersToWords.numberWord(22));
+      String word = "ninety eight";
+      assertEquals(word, numbersToWords.numberWord(98));
     }
+
+    @Test
+     public void numberWord_translateANumberAbove99_word() {
+       App numbersToWords = new App();
+       String word = "one hundred one";
+       assertEquals(word, numbersToWords.numberWord(101));
+     }
+
+   @Test
+    public void numberWord_translateANumberBetween100And120_word() {
+      App numbersToWords = new App();
+      String word = "one hundred eighteen";
+      assertEquals(word, numbersToWords.numberWord(118));
+    }
+
+    @Test
+     public void numberWord_translateANumberUnder1000_word() {
+       App numbersToWords = new App();
+       String word = "nine hundred ninety six";
+       assertEquals(word, numbersToWords.numberWord(996));
+     }
 }
